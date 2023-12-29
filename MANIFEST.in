@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include quantbit_finance_customization *.css
+recursive-include quantbit_finance_customization *.csv
+recursive-include quantbit_finance_customization *.html
+recursive-include quantbit_finance_customization *.ico
+recursive-include quantbit_finance_customization *.js
+recursive-include quantbit_finance_customization *.json
+recursive-include quantbit_finance_customization *.md
+recursive-include quantbit_finance_customization *.png
+recursive-include quantbit_finance_customization *.py
+recursive-include quantbit_finance_customization *.svg
+recursive-include quantbit_finance_customization *.txt
+recursive-exclude quantbit_finance_customization *.pyc
