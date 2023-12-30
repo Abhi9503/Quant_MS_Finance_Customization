@@ -215,3 +215,13 @@ app_license = "MIT"
 # auth_hooks = [
 #	"quantbit_finance_customization.auth.validate"
 # ]
+
+
+fixtures=[
+    {
+        "doctype": "Client Script",
+        "filters": [
+            ["name", "=", "Payment Entry-Customization"],
+        ],
+    }
+]
