@@ -25,13 +25,21 @@ def get_payment_references(party,party_type):
                     updated_doc.append(entry)
         else:
             doc = frappe.get_all("Journal Entry Account", {"party": party, "party_type":party_type, 'docstatus': 1},
-                                 ['parent', 'debit_in_account_currency', 'credit_in_account_currency',"reference_name"])
+                                 ['parent', 'debit_in_account_currency', 'credit_in_account_currency',"reference_name","account"])
             if doc:
                 for entry in doc:
+                    outstanding_amt=0
+                    if(entry["credit_in_account_currency"]):
+                        account_doc=frappe.get_value("Account",{"name":entry["account"]},"account_type")
+                        outstanding_amt=-entry["credit_in_account_currency"] if(account_doc=="Receivable") else entry["credit_in_account_currency"]
+                    if(entry["debit_in_account_currency"]):
+                        account_doc=frappe.get_value("Account",{"name":entry["account"]},"account_type")
+                        outstanding_amt=-entry["debit_in_account_currency"] if(account_doc=="Payable") else entry["debit_in_account_currency"]
+                        
                     entry["doctype"] = doctype
                     entry["name"] = entry["parent"]
                     entry["grand_total"] = entry["credit_in_account_currency"] or entry["debit_in_account_currency"]
-                    entry["outstanding_amount"] = entry["grand_total"]
+                    entry["outstanding_amount"] = outstanding_amt
                     entry["ref_doctype"]=entry["reference_name"] if entry["reference_name"] else None
                     entry["base_net_total"]=None
                     updated_doc.append(entry)
