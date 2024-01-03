@@ -12,16 +12,20 @@ def get_payment_references(party,party_type):
                 field_list=['name','grand_total','outstanding_amount',"return_against","base_net_total"]
             else:
                 doctype_name="Supplier"
-                field_list=['name','grand_total','outstanding_amount',"return_against"]
+                field_list=['name','grand_total','outstanding_amount',"return_against","taxes_and_charges_deducted"]
             doc = frappe.get_all(doctype, {doctype_name: party, 'docstatus': 1},field_list)
             if doc:
                 for entry in doc:
                     entry["doctype"] = doctype
                     entry["ref_doctype"]=entry["return_against"] if entry["return_against"] else None
-                    if doctype == "Sales Invoice":
+                    if doctype =="Sales Invoice":
                         entry["base_net_total"]=entry["base_net_total"] if entry["base_net_total"] else None
                     else:
                         entry["base_net_total"]=None
+                    if doctype =="Purchase Invoice":
+                        entry["taxes_and_charges_deducted"]=entry["taxes_and_charges_deducted"] if entry["taxes_and_charges_deducted"] else None
+                    else:
+                        entry["taxes_and_charges_deducted"]=None  
                     updated_doc.append(entry)
         else:
             doc = frappe.get_all("Journal Entry Account", {"party": party, "party_type":party_type, 'docstatus': 1},
@@ -42,6 +46,7 @@ def get_payment_references(party,party_type):
                     entry["outstanding_amount"] = outstanding_amt
                     entry["ref_doctype"]=entry["reference_name"] if entry["reference_name"] else None
                     entry["base_net_total"]=None
+                    entry["taxes_and_charges_deducted"]=None  
                     updated_doc.append(entry)
     return updated_doc
 
