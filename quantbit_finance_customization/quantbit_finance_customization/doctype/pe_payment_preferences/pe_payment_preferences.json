@@ -1,0 +1,146 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-12-29 12:01:09.711714",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "type",
+  "column_break_hxpxy",
+  "reference_id",
+  "section_break_f1h7d",
+  "grand_total",
+  "discount_amount",
+  "paidreceipt_amount",
+  "tds_apply_amount",
+  "check",
+  "column_break_pmfyq",
+  "outstanding_amount",
+  "allocated_amount",
+  "reference_document",
+  "deduction_amount",
+  "pi_discount_apply_amount"
+ ],
+ "fields": [
+  {
+   "fieldname": "type",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Type",
+   "options": "DocType",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_hxpxy",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "reference_id",
+   "fieldtype": "Dynamic Link",
+   "in_list_view": 1,
+   "label": "Reference Id",
+   "options": "type",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_f1h7d",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "grand_total",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Grand Total",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "discount_amount",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Discount Amount",
+   "precision": "2"
+  },
+  {
+   "default": "0",
+   "fieldname": "paidreceipt_amount",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Allocated Amount",
+   "precision": "2"
+  },
+  {
+   "fieldname": "tds_apply_amount",
+   "fieldtype": "Float",
+   "label": "TDS Apply Amount",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "check",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Check"
+  },
+  {
+   "fieldname": "column_break_pmfyq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "outstanding_amount",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Outstanding Amount",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "allocated_amount",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Paid/Receipt Amount",
+   "precision": "2"
+  },
+  {
+   "fieldname": "reference_document",
+   "fieldtype": "Dynamic Link",
+   "in_list_view": 1,
+   "label": "Reference Document",
+   "options": "type",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "deduction_amount",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Deduction Amount",
+   "precision": "2"
+  },
+  {
+   "fieldname": "pi_discount_apply_amount",
+   "fieldtype": "Float",
+   "label": "PI Discount Apply Amount",
+   "precision": "2"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-01-03 11:08:01.380172",
+ "modified_by": "Administrator",
+ "module": "Quantbit Finance Customization",
+ "name": "PE Payment Preferences",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
